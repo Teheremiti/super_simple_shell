@@ -18,15 +18,9 @@ void _which(char *filename)
 	struct stat status;
 	int flag = stat(filename, &status);
 
-	if (flag > 0)
+	if (flag == -1)
 	{
 		printf("%s: command not found\n", filename);
-		exit(1);
-	}
-
-	else if (flag == -1)
-	{
-		perror("Error");
 		exit(2);
 	}
 
