@@ -1,9 +1,6 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <unistd.h>
-#include <string.h>
+#include "main.h"
 
 /**
  * _which - Look for files in the current PATH
@@ -22,7 +19,7 @@ void _which(char *filename)
 	if (filename[0] != '/')
 		sep = "/";
 
-	path = getenv("PATH");
+	path = _getenv("PATH");
 	if (path == NULL)
 	{
 		fprintf(stderr, "PATH environment variable not found\n");
