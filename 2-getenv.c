@@ -2,14 +2,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include "main.h"
+
+/**
+ * _getenv - Get the value of a environment variable if it exists
+ *
+ * @name: Variable to check
+ *
+ * Return: The value of the variable if it exists, otherwise NULL
+ */
 
 char *_getenv(const char *name)
 {
-	extern char **environ;
-	int i = 0;
+	int i;
 	char *token;
 
-	for (; environ[i] != NULL; i++)
+	for (i = 0; environ[i]; i++)
 	{
 		token = strtok(environ[i], "=");
 		if (strcmp(token, name) == 0)
@@ -21,6 +29,15 @@ char *_getenv(const char *name)
 	return (NULL);
 }
 
+
+/**
+ * main - Own implementation of getenv()
+ *
+ * @argc: Argument vector
+ * @argv: Argument count extern char **environ;
+ *
+ * Return: 0 on SUCCESS, otherwise 1
+ */
 
 int main(int argc, char **argv)
 {
@@ -34,6 +51,5 @@ int main(int argc, char **argv)
 
 	env_var = _getenv(argv[1]);
 	printf("%s\n", env_var);
-
 	return (0);
 }
