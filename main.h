@@ -8,5 +8,7 @@
 
 extern char **environ;
 void free_argv(char **);
+char *_getenv(const char *);
+void _which(const char *);
 
 #endif
